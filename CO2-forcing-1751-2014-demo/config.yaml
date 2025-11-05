@@ -1,0 +1,20 @@
+paths:
+  gems_csv: data/gems_co2_1751_2014.csv
+  eluc_csv: data/oscar_eluc_1751_2014.csv
+  out_dir: out
+
+period:
+  start_year: 1751
+  end_year: 2014
+
+carbon_cycle:
+  ppm_per_GtC: 0.4716981
+  C0_ppm: 278.0
+  a: [0.2173, 0.2240, 0.2824, 0.2763]
+  tau: [inf, 394.4, 36.54, 4.304]
+
+forcing:
+  myhre_k: 5.35
+
+attribution:
+  shock_frac: 0.20
