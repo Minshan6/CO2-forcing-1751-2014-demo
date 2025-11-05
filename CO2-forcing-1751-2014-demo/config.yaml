@@ -1,6 +1,6 @@
 paths:
-  gems_csv: data/gems_co2_1751_2014.csv
-  eluc_csv: data/oscar_eluc_1751_2014.csv
+  ff_csv: data/co2_ff_demo_1751_2014.csv
+  eluc_csv: data/co2_eluc_demo_1751_2014.csv
   out_dir: out
 
 period:

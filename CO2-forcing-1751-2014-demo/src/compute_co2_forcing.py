@@ -13,7 +13,7 @@ def main(config_path: str):
 
     y0 = cfg["period"]["start_year"]
     y1 = cfg["period"]["end_year"]
-    gems_csv = cfg["paths"]["gems_csv"]
+    ff_csv = cfg["paths"]["ff_csv"]
     eluc_csv = cfg["paths"]["eluc_csv"]
     out_dir  = cfg["paths"]["out_dir"]
     os.makedirs(out_dir, exist_ok=True)
@@ -26,7 +26,7 @@ def main(config_path: str):
     shock       = cfg["attribution"]["shock_frac"]
 
     # === 2. Load emission inputs ===
-    df = load_inputs(gems_csv, eluc_csv, y0, y1)
+    df = load_inputs(ff_csv, eluc_csv, y0, y1)
     years = df["year"].astype(int).values
     FF   = df["FF_GtC"].astype(float).values
     ELUC = df["ELUC_GtC"].astype(float).values
@@ -64,11 +64,7 @@ def main(config_path: str):
         "RF_FF_abs_Wm2": RF_FF_abs,
         "RF_ELUC_abs_Wm2": RF_ELUC_abs,
     })
-
-    abs_df.to_excel(
-    os.path.join(out_dir, "co2_abs_contrib_timeseries.xlsx"),
-    index=False,
-    )
+    abs_df.to_excel(os.path.join(out_dir, "co2_abs_contrib_timeseries.xlsx"), index=False)
 
     # === 7. Write relative contributions ===
     share_df = pd.DataFrame({
@@ -76,11 +72,7 @@ def main(config_path: str):
         "FF_share": share_FF,
         "ELUC_share": share_ELUC,
     })
-
-    share_df.to_excel(
-    os.path.join(out_dir, "co2_share_timeseries.xlsx"),
-    index=False,
-    )
+    share_df.to_excel(os.path.join(out_dir, "co2_share_timeseries.xlsx"), index=False)
 
     print("✅ Wrote numeric outputs: out/co2_abs_contrib_timeseries.xlsx, out/co2_share_timeseries.xlsx")
 
